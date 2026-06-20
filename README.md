@@ -125,6 +125,45 @@ IM19: Searching for DeleteBucket Event
 
 IM20: Investigating DeleteBucket Event Information
 
+### Part 7: Creating EC2 Instance to Generate Events
+
+I wanted to create a EC2 Instance to generate more events in CloudTrail. To do this, I went to the EC2 dashboard and selected "Lanuch Instance." I then started to configure it with the most basic settings as this instance is only being created to generate CloudTrail events. I made a basic Amazon Linux instance named "week7-lab-instance." I gave it a free-tier eligible instance type, gave it a key pair, and left the network settings default. I then launched the instance and waited until it finished its two checks. This action should later produce a event in CloudTrail. 
+
+### Part 8: Generating more Instance Events 
+
+Now that the instance was up, I wanted to perform different actions with it to generate more events in CloudTrail. 
+1. **STOPPING THE INSTANCE.** First I wanted to stop the instance and generate a "Stopinstances" event. to do this, I went to the instances page and clicked my instance and then clicked "Instance state" and then "Stop instance." This stopped the instance from running. This however would not stop the instance from accruing storage and database charges.
+2. **STARTING THE INSTANCE.** I then wanted to start the instance agin and generate a "Startinstances" event. To do this, I clicked my instance and then clicked "Instance state" and then "Start instance." This started the instance again
+3. **REBOOTING THE INSTANCE.** Next, I wanted to reboot the instance agin and generate a "Rebootinstances" event. To do this, I clicked my instance and then clicked "Instance state" and then "Reboot instance." This action restarts the instance internally
+4. **TERMINATING THE INSTANCE.** Lastly, I wanted to terminate the instance and generate a "Terminateinstances" event. To do this, I clicked my instance and then clicked "Instance state" and then "Terminate instance." This would permenantly delete the instance without recovery.
+
+### Part 9: Investigating EC2 Events in CloudTrail. 
+
+Now that I generated all these EC2 events in, I wanted to invesigate them in CloudTrail. I went back into Event history in CloudTrail. I then searched each event name in the search bar to look into each event. The five events were RunInstances, StopInstances, StartInstances, RebootInstances, and TerminateInstances. Each of those events showed information like the Event name, Timestamp, the User, Source IP, and the Resources that were affected by that event. I recorded and documented the information for each event. 
+
+### Part 10: IAM Security Event Generation
+
+The last kind of activity I wanted to generate was IAM events. I simply did this by creating a new user in the "IAM Users" section in IAM. I named it "week7-test-user" and created the user. I didn't give the user any permissions since it was just a standard user. I also didn't add it to any groups as well. 
+
+### Part 11: Investigating IAM Events in Cloud Trail
+
+Now that I created the user, I looked for the event associated with it, which is "CreateUser." I searched for it, and found the one that I just created. Again it listed the User, the Event Name, Source IP, and the Timestamp. After this, I then deleted the user I just created to generate a "DeleteUser" timestamp. I deleted the user, and then looked for the DeleteUser event in CloudTrail. I found similar information in both events. 
+
+### Part 12: Exploring CloudWatch
+
+This last part of the project was more observatory as I wanted to observe CloudWatch as it wasn't used in this project. CloudWatch is a monitoring service that collects metrics, logs, and performance data from AWS resources and applications. A good way to think about it is CloudTrail is the "Logs" of AWS and CloudWatch is the "Dashboard" of AWS. A few things in CloudWatch I looked at were Metrics (shows stats about different resources), Logs (more detailed Logs and info), Alarms (currently didn't have any), Dashboards (you can create your own to personalize what metrics to see). Again, I was just looking around at the different services, in a future project CloudWatch may be used. 
+
+## Conclusion
+
+## Conclusion
+
+This lab was successful in demonstrating the foundational concepts of cloud security monitoring, audit logging, and security event investigation using AWS CloudTrail and CloudWatch. Throughout the project, key AWS services were utilized, including Amazon S3, EC2, IAM, CloudTrail, and CloudWatch, providing practical experience with cloud resource management and monitoring.
+
+In addition to configuring CloudTrail, this project provided hands-on experience generating and analyzing cloud activity by creating and deleting S3 buckets, launching and managing EC2 instances, and creating and removing IAM users. These actions generated CloudTrail events that were investigated to identify user activity, API calls, timestamps, source IP addresses, and affected resources. This demonstrated how cloud security teams use audit logs to maintain visibility and investigate actions performed within AWS environments.
+
+The investigation portion of the lab introduced important cloud security and security operations concepts by examining event histories and tracing administrative actions across AWS services. By reviewing CloudTrail logs and exploring CloudWatch monitoring capabilities, I gained a better understanding of how organizations monitor cloud environments, detect suspicious activity, and maintain accountability for user actions.
+
+Overall, this project strengthened my understanding of AWS cloud security, event auditing, activity monitoring, and security investigations. It provided valuable experience working with cloud-native security tools while demonstrating the importance of visibility, logging, and monitoring in modern cloud environments. The skills gained from this lab establish a strong foundation for future projects involving cloud security operations, threat hunting, incident response, and security monitoring within AWS.
 
 
 
